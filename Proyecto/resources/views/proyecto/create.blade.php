@@ -36,6 +36,22 @@
                 @enderror
             </div>
 
+            <div class="form-group">
+                <label for="departamentos">departamentos</label>
+                <select name="departamentos" class="form-control @error('departamentos') is-invalid @enderror" id="departamentos">
+                    <option value=""> --Seleccione-- </option>
+                    <!--FOREACH-->
+                    <!--llama a la variable del controlador-->
+                    @foreach($departamentos as $i => $valor)
+                    <!--TERNARIO   if y else  -->
+                    <option value={{$i}} {{old('departamentos')==$i?'selected':''}}>{{$valor}}</option>
+                    @endforeach
+
+                </select>
+                <!--ERRORES CUANDO ESTE VACIO-->
+                
+
+            </div>
 
             <div class="form-group">
 
@@ -55,12 +71,12 @@
 
             <div class="form-group">
 
-                <label for="telefono">Telefono localidad</label>
+                <label for="departamento">departamento localidad</label>
                 <!--alertas de error en el formulario                                                                     no borra lo ingresado -->
-                <input type="text" name="telefono" class="form-control @error('telefono') is-invalid @enderror"
-                    id="telefono" placeholder="Telefono Localidades" value="{{old('telefono')}}">
+                <input type="text" name="departamento" class="form-control @error('departamento') is-invalid @enderror"
+                    id="departamento" placeholder="departamento Localidades" value="{{old('departamento')}}">
                 <!--valida el campo-->
-                @error('telefono')
+                @error('departamento')
                 <p>ERROR </p>
                 <span class="invalid-feedback d-block" role="alert">
                     <strong>{{$message}}</strong>

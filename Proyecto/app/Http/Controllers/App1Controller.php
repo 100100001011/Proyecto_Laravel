@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\DB;
 
 class App1Controller extends Controller
 {
+    //CONTRUCTOR
+    public function __construct()
+    {
+        $this->middleware('auth');    
+    }
+
+    
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +32,9 @@ class App1Controller extends Controller
      */
     public function create()
     {
-        return view('proyecto.create');
+        //CONSULTAR LOS DEPARTAMENTOS
+        $departamentos =DB::table('app2s')->get()->pluck('nombre','id');//->dd();
+        return view('proyecto.create')->with('departamentos',$departamentos);
     }
 
     /**
@@ -58,7 +67,7 @@ class App1Controller extends Controller
         
 
         //REDIRECCIONA
-        return redirect()->action([App1Controller::class,'index']);
+        return redirect()->action([App1Controller::class,'Proyecto/index']);
         
     }
 

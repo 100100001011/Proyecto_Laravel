@@ -13,12 +13,23 @@ class CreateApp1sTable extends Migration
      */
     public function up()
     {
+        //CREACION DE TABLAS
+        Schema::create('app2s', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre');
+            $table->timestamps();
+        });
+
         Schema::create('app1s', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('direccion')->nullable();
-            $table->integer('telefono')->nullable();
-            $table->string('correo')->nullable();
+            $table->string('direccion');
+            $table->integer('telefono');
+            $table->string('correo');
+            $table->string('imagen');
+            //RELACION DE TABLAS
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('departamentos_id')->references('id')->on('app2s');
             $table->timestamps();
         });
     }
@@ -31,5 +42,6 @@ class CreateApp1sTable extends Migration
     public function down()
     {
         Schema::dropIfExists('app1s');
+        Schema::dropIfExists('app2s');
     }
 }
