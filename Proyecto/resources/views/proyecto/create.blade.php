@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
+@section('trix')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.css"
+    integrity="sha512-CWdvnJD7uGtuypLLe5rLU3eUAkbzBR3Bm1SFPEaRfvXXI2v2H5Y0057EMTzNuGGRIznt8+128QIDQ8RqmHbAdg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+@endsection
+
+
 @section('botones')
 <br>
 <!--para llamar a la template-->
@@ -49,9 +56,8 @@
 
                 </select>
                 <!--ERRORES CUANDO ESTE VACIO-->
-                
-
             </div>
+
 
             <div class="form-group">
 
@@ -71,12 +77,12 @@
 
             <div class="form-group">
 
-                <label for="departamento">departamento localidad</label>
+                <label for="telefono">telefono localidad</label>
                 <!--alertas de error en el formulario                                                                     no borra lo ingresado -->
-                <input type="text" name="departamento" class="form-control @error('departamento') is-invalid @enderror"
-                    id="departamento" placeholder="departamento Localidades" value="{{old('departamento')}}">
+                <input type="text" name="telefono" class="form-control @error('telefono') is-invalid @enderror"
+                    id="telefono" placeholder="telefono Localidades" value="{{old('telefono')}}">
                 <!--valida el campo-->
-                @error('departamento')
+                @error('telefono')
                 <p>ERROR </p>
                 <span class="invalid-feedback d-block" role="alert">
                     <strong>{{$message}}</strong>
@@ -85,7 +91,8 @@
             </div>
 
 
-            
+
+                    
             <div class="form-group">
 
                 <label for="correo">Correo localidad</label>
@@ -100,6 +107,26 @@
                 </span>
                 @enderror
             </div>
+
+
+            
+            <div class="form-group">
+
+                <label for="descripcion">descripcion</label>
+                <!--alertas de error en el formulario                                                                     no borra lo ingresado -->
+                <input type ="hidden" name="descripcion" id="descripcion"
+                     value="{{old('descripcion')}}">
+                <trix-editor class="form-control @error('descripcion') is-invalid @enderror" input="descripcion"></trix-editor>
+                <!--valida el campo-->
+                @error('descripcion')
+                <p>ERROR </p>
+                <span class="invalid-feedback d-block" role="alert">
+                    <strong>{{$message}}</strong>
+                </span>
+                @enderror
+            </div>
+
+
             <br>
             <div class="form-group">
 
@@ -108,10 +135,19 @@
             </div>
 
 
+
+
         </form>
 
     </div>
 
 </div>
 
+@endsection
+
+<!--Estilos -->
+@section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js"
+    integrity="sha512-/1nVu72YEESEbcmhE/EvjH/RxTg62EKvYWLG3NdeZibTCuEtW5M4z3aypcvsoZw03FAopi94y04GhuqRU9p+CQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @endsection

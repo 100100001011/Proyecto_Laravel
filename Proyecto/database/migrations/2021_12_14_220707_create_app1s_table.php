@@ -26,7 +26,8 @@ class CreateApp1sTable extends Migration
             $table->string('direccion');
             $table->integer('telefono');
             $table->string('correo');
-            $table->string('imagen');
+            $table->string('imagen')->nullable();
+            $table->string('descripcion');
             //RELACION DE TABLAS
             $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('departamentos_id')->references('id')->on('app2s');

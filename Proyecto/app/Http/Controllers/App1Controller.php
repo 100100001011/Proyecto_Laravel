@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\App1;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class App1Controller extends Controller
 {
@@ -53,7 +54,10 @@ class App1Controller extends Controller
             'nombre' => 'required|min:6',
             'direccion' => 'required',
             'telefono' => 'required|min:9',
-            'correo' => 'required'
+            'correo' => 'required',
+            'departamentos' => 'required',
+            'descripcion' => 'required'
+
         ]);
         //AGREGAR a la base
         DB::table('app1s')->insert([
@@ -62,6 +66,11 @@ class App1Controller extends Controller
             'direccion'=>$data['direccion'],
             'telefono'=>$data['telefono'] ,
             'correo'=>$data['correo'] ,
+            'descripcion'=>$data['descripcion'],
+            'user_id'=> Auth::user()->id,
+            'departamentos_id'=>$data['departamentos'],
+            'imagen'=>'imagen.jpg'
+            
         ]);
 
         
