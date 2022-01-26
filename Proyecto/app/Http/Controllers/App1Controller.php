@@ -76,7 +76,7 @@ class App1Controller extends Controller
         
 
         //REDIRECCIONA
-        return redirect()->action([App1Controller::class,'Proyecto/index']);
+        return redirect()->action([App1Controller::class,'index']);
         
     }
 

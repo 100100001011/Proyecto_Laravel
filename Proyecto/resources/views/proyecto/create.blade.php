@@ -36,7 +36,7 @@
                     placeholder="Nombre Localidades" value="{{old('nombre')}}">
                 <!--valida el campo-->
                 @error('nombre')
-                <p>ERROR </p>
+                <p>Favor Llenar los campos </p>
                 <span class="invalid-feedback d-block" role="alert">
                     <strong>{{$message}}</strong>
                 </span>
@@ -55,7 +55,7 @@
                     @endforeach
 
                 </select>
-                <!--ERRORES CUANDO ESTE VACIO-->
+                <!--Favor Llenar los camposES CUANDO ESTE VACIO-->
             </div>
 
 
@@ -67,7 +67,7 @@
                     id="direccion" placeholder="Direccion Localidades" value="{{old('direccion')}}">
                 <!--valida el campo-->
                 @error('direccion')
-                <p>ERROR </p>
+                <p>Favor Llenar los campos </p>
                 <span class="invalid-feedback d-block" role="alert">
                     <strong>{{$message}}</strong>
                 </span>
@@ -79,11 +79,11 @@
 
                 <label for="telefono">telefono localidad</label>
                 <!--alertas de error en el formulario                                                                     no borra lo ingresado -->
-                <input type="text" name="telefono" class="form-control @error('telefono') is-invalid @enderror"
+                <input type="text" name="telefono" maxlength="11" class="form-control @error('telefono') is-invalid @enderror"
                     id="telefono" placeholder="telefono Localidades" value="{{old('telefono')}}">
                 <!--valida el campo-->
                 @error('telefono')
-                <p>ERROR </p>
+                <p>Favor Llenar los campos </p>
                 <span class="invalid-feedback d-block" role="alert">
                     <strong>{{$message}}</strong>
                 </span>
@@ -101,7 +101,7 @@
                     id="correo" placeholder="Correo Localidades" value="{{old('correo')}}">
                 <!--valida el campo-->
                 @error('correo')
-                <p>ERROR </p>
+                <p>Favor Llenar los campos </p>
                 <span class="invalid-feedback d-block" role="alert">
                     <strong>{{$message}}</strong>
                 </span>
@@ -119,7 +119,7 @@
                 <trix-editor class="form-control @error('descripcion') is-invalid @enderror" input="descripcion"></trix-editor>
                 <!--valida el campo-->
                 @error('descripcion')
-                <p>ERROR </p>
+                <p>Favor Llenar los campos </p>
                 <span class="invalid-feedback d-block" role="alert">
                     <strong>{{$message}}</strong>
                 </span>
@@ -130,7 +130,7 @@
             <br>
             <div class="form-group">
 
-                <input type="submit" class="btn-btn-primary" value="Ingresar">
+                <input type="submit" class="btn btn-danger" value="Ingresar">
 
             </div>
 
