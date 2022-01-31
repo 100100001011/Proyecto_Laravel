@@ -25,7 +25,7 @@
     <div class="col-md-8">
 
         <!--para que valide-->
-        <form method="POST" action={{route('proyecto.store')}} novalidate>
+        <form method="POST" action={{route('proyecto.store')}} enctype="multipart/form-data" novalidate>
             <!--Token -->
             @csrf
             <div class="form-group">
@@ -127,12 +127,29 @@
             </div>
 
 
+            <div class="form-group">
+                <label for="imagen">Imagen</label>
+                <input id="imagen" class="form-control @error('imagen') is-invalid @enderror" type="file" class="form-control" name="imagen"> 
+                <!--valida el campo-->
+                @error('imagen')
+                <p>ERROR </p>
+                <span class="invalid-feedback d-block" role="alert">
+                    <strong>{{$message}}</strong>
+                </span>
+                @enderror
+            </div>
+            
+          
+
             <br>
             <div class="form-group">
 
                 <input type="submit" class="btn btn-danger" value="Ingresar">
 
             </div>
+
+
+            
 
 
 

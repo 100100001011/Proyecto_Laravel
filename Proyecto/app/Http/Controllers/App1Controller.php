@@ -49,7 +49,6 @@ class App1Controller extends Controller
          //VARDUMP
         //dd($request->all());
         //para validar
-        
         $data=request()->validate([
             'nombre' => 'required|min:6',
             'direccion' => 'required',
@@ -59,6 +58,8 @@ class App1Controller extends Controller
             'descripcion' => 'required'
 
         ]);
+        $ruta_imagen = $request['imagen']->store('upload-proyecto','public');
+
         //AGREGAR a la base
         DB::table('app1s')->insert([
             //NOMBRE CAMPOS BBDD --> NOMBRE CAMPO VISTA
@@ -69,7 +70,7 @@ class App1Controller extends Controller
             'descripcion'=>$data['descripcion'],
             'user_id'=> Auth::user()->id,
             'departamentos_id'=>$data['departamentos'],
-            'imagen'=>'imagen.jpg'
+            'imagen'=>$ruta_imagen
             
         ]);
 
