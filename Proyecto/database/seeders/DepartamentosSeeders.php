@@ -20,5 +20,18 @@ class DepartamentosSeeders extends Seeder
             'updated_at'=>date('Y-m-d H:i:s')
 
         ]);
+
+        DB::table('app2s')->insert([
+            'nombre'=>'Departamento_2', 
+            'created_at'=>date('Y-m-d H:i:s'),
+            'updated_at'=>date('Y-m-d H:i:s')
+
+        ]);
+        DB::table('app2s')->insert([
+            'nombre'=>'Departamento_3', 
+            'created_at'=>date('Y-m-d H:i:s'),
+            'updated_at'=>date('Y-m-d H:i:s')
+
+        ]);
     }
 }

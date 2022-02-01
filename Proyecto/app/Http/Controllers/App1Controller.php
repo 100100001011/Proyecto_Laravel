@@ -23,7 +23,8 @@ class App1Controller extends Controller
      */
     public function index()
     {
-        return view('proyecto.index');
+        $userApp1 = Auth::user()->userApp1;
+        return view('proyecto.index')->with('userApp1',$userApp1);
     }
 
     /**
