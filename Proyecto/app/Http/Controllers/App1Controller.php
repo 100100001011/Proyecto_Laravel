@@ -53,7 +53,7 @@ class App1Controller extends Controller
         $data=request()->validate([
             'nombre' => 'required|min:6',
             'direccion' => 'required',
-            'telefono' => 'numeric|required|min:9',
+            'telefono' => 'digits:10|required|min:9',
             'correo' => 'required',
             'departamentos' => 'required',
             'descripcion' => 'required'
