@@ -79,7 +79,7 @@
 
                 <label for="telefono">telefono localidad</label>
                 <!--alertas de error en el formulario                                                                     no borra lo ingresado -->
-                <input type="text" name="telefono" maxlength="11" class="form-control @error('telefono') is-invalid @enderror"
+                <input type="number" name="telefono" maxlength="11" class="form-control @error('telefono') is-invalid @enderror"
                     id="telefono" placeholder="telefono Localidades" value="{{old('telefono')}}">
                 <!--valida el campo-->
                 @error('telefono')
