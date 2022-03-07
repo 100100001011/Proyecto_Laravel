@@ -8,6 +8,8 @@
     <p class="centrar">
         <!--TAMANIO DE LA IMAGEN-->
         <img src="/storage/{{$app1->imagen}}" class="w-20">
+        
+        <p>imange {{$app1->imagen}}</p>
     </p>
     </div>
     <div class="proyecto-data">

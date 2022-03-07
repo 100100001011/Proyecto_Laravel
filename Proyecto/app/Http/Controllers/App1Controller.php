@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\App1;
+use App\Models\App2;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -61,16 +62,17 @@ class App1Controller extends Controller
             'descripcion' => 'required'
 
         ]);
-        dd($request['imagen']->store('upload-proyecto','public'));
+        //dd($request['imagen']->store('upload-proyecto','public'));
         $ruta_imagen = $request['imagen']->store('upload-app1', 'public');
 
-           //======================================
+        /*
+        //======================================
         //COMENTAR
         $img = Image::make(public_path("storage/{$ruta_imagen}"))->fit(1000, 500);
         //Guardar la imagen
         $img->save();
         //======================================
-
+        */
         //AGREGAR a la base
         DB::table('app1s')->insert([
             //NOMBRE CAMPOS BBDD --> NOMBRE CAMPO VISTA
@@ -112,7 +114,8 @@ class App1Controller extends Controller
      */
     public function edit(App1 $app1)
     {
-        return $app1;
+        $departamentos = App2::all(['id', 'nombre']);
+        return  view("proyecto.edit")->with('departamentos', $departamentos)->with('app1', $app1);
     }
 
     /**
@@ -124,7 +127,51 @@ class App1Controller extends Controller
      */
     public function update(Request $request, App1 $app1)
     {
-        //
+        //VERIFICA POLICY
+        //$this->authorize('update', $app1);
+        //valida datos
+        $data=request()->validate([
+            'nombre' => 'required|min:6',
+            'direccion' => 'required',
+            'telefono' => 'digits:10|required|min:9',
+            'correo' => 'required',
+            //'departamentos' => 'required',
+            'descripcion' => 'required'
+
+        ]);
+        dd($request['imagen']->store('upload-proyecto','public'));
+        $ruta_imagen = $request['imagen']->store('upload-proyectos', 'public');
+
+        $app1->nombre = $data['nombre'];
+        $app1->direccion = $data['direccionbre'];
+        $app1->telefono = $data['telefono'];
+        $app1->correo = $data['correo'];
+        //$app1->departamentos_id = $data['departamentos'];
+        $app1->descripcion = $data['descripcion'];
+      
+
+        //Nueva imagen
+        /*
+        if (request('imagen')) {
+            //VARIABLE PARA QUE ALMACENE LA RUTA DE LA IMAGEN
+            $ruta_imagen = $request['imagen']->store('upload-proyecto', 'public');
+            //Redimensionar la imagen
+            /*
+            //======================================
+            //COMENTAR
+            $img = Image::make(public_path("storage/{$ruta_imagen}"))->fit(500, 500);
+            //Guardar la imagen
+            $img->save();
+            //======================================
+            
+            $app1->imagen = $ruta_imagen;
+        }
+        */
+        dd($app1);
+        $app1->save();
+        //REDIRECCIONA
+        //return redirect()->action([App1Controller::class, 'index']);
+        return $app1;
     }
 
     /**

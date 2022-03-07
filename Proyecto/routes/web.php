@@ -29,6 +29,7 @@ Route::get('/proyecto/create',[App1Controller::class,'create']) -> name('proyect
 Route::get('/proyecto/{app1}',[App1Controller::class,'show']) -> name('proyecto.show');
 //EIDTAR
 Route::get('/proyecto/{app1}/edit',[App1Controller::class,'edit']) -> name('proyecto.edit');
-
+//ACTUALIZAR
+Route::put('/proyecto/{app1}',[App1Controller::class,'update']) -> name('proyecto.update');
 Route::post('/proyecto',[App1Controller::class,'store']) -> name('proyecto.store');
 Auth::routes();
