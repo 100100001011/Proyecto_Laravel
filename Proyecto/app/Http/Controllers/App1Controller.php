@@ -62,6 +62,7 @@ class App1Controller extends Controller
             'descripcion' => 'required'
 
         ]);
+        
         //dd($request['imagen']->store('upload-proyecto','public'));
         $ruta_imagen = $request['imagen']->store('upload-app1', 'public');
 
@@ -74,6 +75,7 @@ class App1Controller extends Controller
         //======================================
         */
         //AGREGAR a la base
+        /*
         DB::table('app1s')->insert([
             //NOMBRE CAMPOS BBDD --> NOMBRE CAMPO VISTA
             'nombre'=>$data['nombre'],
@@ -86,11 +88,23 @@ class App1Controller extends Controller
             'imagen'=>$ruta_imagen
             
         ]);
+        */
+        Auth::user()->userApp1()->create([
+            'nombre'=>$data['nombre'],
+            'direccion'=>$data['direccion'],
+            'telefono'=>$data['telefono'] ,
+            'correo'=>$data['correo'] ,
+            'descripcion'=>$data['descripcion'],
+            'user_id'=> Auth::user()->id,
+            'departamentos_id'=>$data['departamentos'],
+            'imagen'=>$ruta_imagen
+        ]);
 
         
 
         //REDIRECCIONA
         return redirect()->action([App1Controller::class,'index']);
+        //return $ruta_imagen;
         
     }
 
