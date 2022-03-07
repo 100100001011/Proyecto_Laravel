@@ -26,12 +26,14 @@
             @foreach($userApp1 as $userApp1)
                 <tr>
                     <td>{{$userApp1->nombre}}</td>
-                    <td>{{$userApp1->departamentos_id}}</td>
+                    <td>{{$userApp1->DepartamentosApp1->nombre}}</td>
                     <td>{{$userApp1->direccion}}</td>
                     <td>{{$userApp1->telefono}}</td>
                     <td>{{$userApp1->correo}}</td>
+                    
                     <td>
-                        <a href="" class="btn btn-success">Ver</a>
+                        
+                        <a href="{{route('proyecto.show',['app1'=>$userApp1->id])}}" class="btn btn-success d-block mb-1">Ver</a>
                         <a href="" class="btn btn-dark">Editar</a>
                         <a href="" class="btn btn-danger">Eliminar</a>
                     </td>

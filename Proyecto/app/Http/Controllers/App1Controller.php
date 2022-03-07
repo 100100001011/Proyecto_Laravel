@@ -6,6 +6,8 @@ use App\Models\App1;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
+//use Intervention\Image\Facades\Image;
 
 class App1Controller extends Controller
 {
@@ -59,7 +61,15 @@ class App1Controller extends Controller
             'descripcion' => 'required'
 
         ]);
-        $ruta_imagen = $request['imagen']->store('upload-proyecto','public');
+        dd($request['imagen']->store('upload-proyecto','public'));
+        $ruta_imagen = $request['imagen']->store('upload-app1', 'public');
+
+           //======================================
+        //COMENTAR
+        $img = Image::make(public_path("storage/{$ruta_imagen}"))->fit(1000, 500);
+        //Guardar la imagen
+        $img->save();
+        //======================================
 
         //AGREGAR a la base
         DB::table('app1s')->insert([
@@ -90,7 +100,8 @@ class App1Controller extends Controller
      */
     public function show(App1 $app1)
     {
-        //
+        return view('proyecto.show')->with('app1', $app1);
+        //return $app1;
     }
 
     /**
@@ -101,7 +112,7 @@ class App1Controller extends Controller
      */
     public function edit(App1 $app1)
     {
-        //
+        return $app1;
     }
 
     /**

@@ -25,6 +25,10 @@ Route::get('/', function () {
 Route::get('/proyecto', [App1Controller::class,'index']) ->name('proyecto.index');
 //AGREGAR VISTA CREATE GET
 Route::get('/proyecto/create',[App1Controller::class,'create']) -> name('proyecto.create');
+//VISUALIzAR
+Route::get('/proyecto/{app1}',[App1Controller::class,'show']) -> name('proyecto.show');
+//EIDTAR
+Route::get('/proyecto/{app1}/edit',[App1Controller::class,'edit']) -> name('proyecto.edit');
 
 Route::post('/proyecto',[App1Controller::class,'store']) -> name('proyecto.store');
 Auth::routes();
