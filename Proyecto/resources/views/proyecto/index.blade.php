@@ -34,7 +34,7 @@
                     <td>
                         
                         <a href="{{route('proyecto.show',['app1'=>$userApp1->id])}}" class="btn btn-success d-block mb-1">Ver</a>
-                        <a href="" class="btn btn-dark">Editar</a>
+                        <a href="{{route('proyecto.edit',['app1'=>$userApp1->id])}}" class="btn btn-dark d-block mb-1">Editar</a>
                         <a href="" class="btn btn-danger">Eliminar</a>
                     </td>
                 </tr>

@@ -23,7 +23,7 @@
 <div class="row justify-content-center mt-5">
 
     <div class="col-md-8">
-        {{$app1->id}}
+        
         <!--para que valide-->
         <form method="POST" action="{{route('proyecto.update',['app1'=>$app1->id])}} " enctype="multipart/form-data" novalidate>
             <!--Token -->
@@ -72,6 +72,22 @@
 
             <div class="form-group">
 
+                <label for="direccion">Direccion:</label>
+                
+                <!--alertas de error en el formulario                                                                     no borra lo ingresado -->
+                <input type="text" name="direccion" class="form-control @error('direccion') is-invalid @enderror" id="direccion"
+                    placeholder="direccion" value="{{$app1->direccion}}">
+                <!--valida el campo-->
+                @error('direccion')
+                <p>ERROR </p>
+                <span class="invalid-feedback d-block" role="alert">
+                    <strong>{{$message}}</strong>
+                </span>
+                @enderror
+            </div>
+
+            <div class="form-group">
+
                 <label for="telefono">Telefono:</label>
                 
                 <!--alertas de error en el formulario                                                                     no borra lo ingresado -->
@@ -88,7 +104,7 @@
 
             <div class="form-group">
 
-                <label for="telefono">Correo:</label>
+                <label for="correo">Correo:</label>
                 
                 <!--alertas de error en el formulario                                                                     no borra lo ingresado -->
                 <input type="text" name="correo" class="form-control @error('correo') is-invalid @enderror" id="correo"

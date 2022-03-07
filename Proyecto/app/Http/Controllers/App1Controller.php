@@ -135,23 +135,23 @@ class App1Controller extends Controller
             'direccion' => 'required',
             'telefono' => 'digits:10|required|min:9',
             'correo' => 'required',
-            //'departamentos' => 'required',
+            'departamento' => 'required',
             'descripcion' => 'required'
 
         ]);
-        dd($request['imagen']->store('upload-proyecto','public'));
-        $ruta_imagen = $request['imagen']->store('upload-proyectos', 'public');
+        //dd($request['imagen']->store('upload-proyecto','public'));
+        //$ruta_imagen = $request['imagen']->store('upload-proyectos', 'public');
 
         $app1->nombre = $data['nombre'];
-        $app1->direccion = $data['direccionbre'];
+        $app1->direccion = $data['direccion'];
         $app1->telefono = $data['telefono'];
         $app1->correo = $data['correo'];
-        //$app1->departamentos_id = $data['departamentos'];
+        $app1->departamentos_id = $data['departamento'];
         $app1->descripcion = $data['descripcion'];
       
 
         //Nueva imagen
-        /*
+        
         if (request('imagen')) {
             //VARIABLE PARA QUE ALMACENE LA RUTA DE LA IMAGEN
             $ruta_imagen = $request['imagen']->store('upload-proyecto', 'public');
@@ -163,15 +163,15 @@ class App1Controller extends Controller
             //Guardar la imagen
             $img->save();
             //======================================
-            
+            */
             $app1->imagen = $ruta_imagen;
         }
-        */
-        dd($app1);
+        
+        //dd($app1);
         $app1->save();
         //REDIRECCIONA
-        //return redirect()->action([App1Controller::class, 'index']);
-        return $app1;
+        return redirect()->action([App1Controller::class, 'index']);
+        //return $data;
     }
 
     /**
