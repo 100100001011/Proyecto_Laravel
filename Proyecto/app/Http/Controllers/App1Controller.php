@@ -128,7 +128,7 @@ class App1Controller extends Controller
     public function update(Request $request, App1 $app1)
     {
         //VERIFICA POLICY
-        //$this->authorize('update', $app1);
+        $this->authorize('update', $app1);
         //valida datos
         $data=request()->validate([
             'nombre' => 'required|min:6',
