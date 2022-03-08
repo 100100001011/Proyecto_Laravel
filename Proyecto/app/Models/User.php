@@ -50,4 +50,9 @@ class User extends Authenticatable
         //            1:n     modelo     
         return $this->hasMany(App1::class);
     }
+
+     //RELACION USUARIOS - PERFILES 1 : 1
+     public function userPerfil(){
+        return $this->hasOne(Perfil::class);
+    }
 }
