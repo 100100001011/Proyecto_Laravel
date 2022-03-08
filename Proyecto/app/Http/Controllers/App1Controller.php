@@ -64,7 +64,7 @@ class App1Controller extends Controller
         ]);
         
         //dd($request['imagen']->store('upload-proyecto','public'));
-        $ruta_imagen = $request['imagen']->store('upload-app1', 'public');
+        $ruta_imagen = $request['imagen']->store('upload-proyecto', 'public');
 
         /*
         //======================================
@@ -196,6 +196,10 @@ class App1Controller extends Controller
      */
     public function destroy(App1 $app1)
     {
-        //
+         //VERIFICA EL POLICY
+        
+         $this->authorize('delete', $app1);    
+         $app1->delete();
+         return redirect()->action([App1Controller::class, 'index']);
     }
 }

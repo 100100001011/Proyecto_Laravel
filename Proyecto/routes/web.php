@@ -31,5 +31,7 @@ Route::get('/proyecto/{app1}',[App1Controller::class,'show']) -> name('proyecto.
 Route::get('/proyecto/{app1}/edit',[App1Controller::class,'edit']) -> name('proyecto.edit');
 //ACTUALIZAR
 Route::put('/proyecto/{app1}',[App1Controller::class,'update']) -> name('proyecto.update');
+//DELETE
+Route::delete('/proyecto/{app1}',[App1Controller::class,'destroy']) -> name('proyecto.destroy');
 Route::post('/proyecto',[App1Controller::class,'store']) -> name('proyecto.store');
 Auth::routes();
