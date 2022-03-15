@@ -59,8 +59,8 @@ class App1Controller extends Controller
             'telefono' => 'digits:10|required|min:9',
             'correo' => 'required',
             'departamentos' => 'required',
-            'descripcion' => 'required'
-
+            'descripcion' => 'required',
+            //'imagen' => 'required'
         ]);
         
         //dd($request['imagen']->store('upload-proyecto','public'));
