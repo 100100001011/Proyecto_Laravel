@@ -46,7 +46,7 @@ class PerfilController extends Controller
      */
     public function show(Perfil $perfil)
     {
-        //
+        return view('perfiles.show')->with('perfil',$perfil);
     }
 
     /**
@@ -57,7 +57,7 @@ class PerfilController extends Controller
      */
     public function edit(Perfil $perfil)
     {
-        //
+        return view('perfiles.edit')->with('perfil',$perfil);
     }
 
     /**

@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 //IMPORTAS EL CONTROLER QUE SE CREO
 use App\Http\Controllers\App1Controller;
+use App\Http\Controllers\PerfilController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,3 +36,10 @@ Route::put('/proyecto/{app1}',[App1Controller::class,'update']) -> name('proyect
 Route::delete('/proyecto/{app1}',[App1Controller::class,'destroy']) -> name('proyecto.destroy');
 Route::post('/proyecto',[App1Controller::class,'store']) -> name('proyecto.store');
 Auth::routes();
+
+
+
+//Perfiles
+Route::get('/perfiles/{perfil}',[PerfilController::class,'show']) -> name('perfiles.show');
+Route::get('/perfiles/{perfil}/edit',[PerfilController::class,'edit']) -> name('perfiles.edit');
+Route::put('/perfiles/{perfil}',[PerfilController::class,'update']) -> name('perfiles.edit');

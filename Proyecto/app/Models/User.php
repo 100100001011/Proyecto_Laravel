@@ -55,4 +55,15 @@ class User extends Authenticatable
      public function userPerfil(){
         return $this->hasOne(Perfil::class);
     }
+
+     //SE CREA UN EVENTO
+     protected static function booted(){
+        parent::booted();
+        static::created(function($user){
+            //asignar un perfil
+            $user->userPerfil()->create();
+        });
+
+        
+    }
 }
