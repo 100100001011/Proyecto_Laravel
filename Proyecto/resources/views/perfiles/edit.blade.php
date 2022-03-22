@@ -13,7 +13,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection
 
 @section('content')
-{{$perfil}}
+{{$perfil}} 
 
 <h1 class="text-center">Editar Perfil</h1>
 <div class="row justify-content-center mt-5">
