@@ -7,24 +7,26 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection
 
 @section('botones')
+<br>
 <!--para llamar a la template-->
-<a href={{route('proyecto.index')}} class="btn btn-primary mr-2 text-white">Volver Index</a>
+<a href="{{route('perfiles.show',['perfil'=>$perfil->id])}}" class="btn btn-primary mr-2 text-white">Regresar</a>
 
 @endsection
 
 @section('content')
-{{$perfil}} 
 
 <h1 class="text-center">Editar Perfil</h1>
 <div class="row justify-content-center mt-5">
     <div class="col-md-10 bg-white p-3">
-        <form method="POST" {{--action={{route('perfiles.update',['perfil'=>$perfil->id])}}--}} >
+        <form method="POST" action={{route('perfiles.update',['perfil'=>$perfil->id])}} enctype="multipart/form-data" novalidate >
             {{--value="{{$receta->nombre}}"--}}
+            @csrf
+            @method('put')
             <div class="form-group">
                 <label for="nombre">Nombre</label>
                 <!--alertas de error en el formulario                                                                     no borra lo ingresado -->
                 <input type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" id="nombre"
-                    placeholder="Nombre" >
+                    placeholder="Nombre" value="{{$perfil->perfilUser->name}}">
                 <!--valida el campo-->
                 @error('nombre')
                 <p>ERROR </p>
@@ -38,7 +40,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                 <label for="url">Sitio Web</label>
                 <!--alertas de error en el formulario                                                                     no borra lo ingresado -->
                 <input type="text" name="url" class="form-control @error('url') is-invalid @enderror" id="url"
-                    placeholder="Sitio Web" >
+                    placeholder="Sitio Web" value="{{$perfil->perfilUser->url}}">
                 <!--valida el campo-->
                 @error('url')
                 <p>ERROR </p>
@@ -51,7 +53,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
             <div class="form-group">
                 <label for="biografia">biografia</label>
                 <!--alertas de error en el formulario                                                                     no borra lo ingresado -->
-                <input type ="hidden" name="biografia" id="biografia">
+                <input type ="hidden" name="biografia" id="biografia" value="{{$perfil->biografia}}">
                 <trix-editor class="form-control @error('categoria') is-invalid @enderror" input="biografia"></trix-editor>
                 @error('biografia')
                 <p>ERROR </p>
@@ -80,7 +82,10 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                </span>
                @enderror
            </div>
+           <div class="form-group">
 
+                <input type="submit" class="btn-btn-primary" value="Actualizar Perfil">
+            </div>
         </form>
     </div>
 
