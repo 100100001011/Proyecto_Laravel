@@ -9,6 +9,7 @@
 @endsection
 
 @section('botones')
+<br>    
 <!--para llamar a la template-->
 <a href={{route('proyecto.index')}} class="btn btn-primary mr-2 text-white">Volver Index</a>
 
