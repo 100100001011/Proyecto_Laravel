@@ -82,9 +82,10 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                </span>
                @enderror
            </div>
+           <br>
            <div class="form-group">
 
-                <input type="submit" class="btn-btn-primary" value="Actualizar Perfil">
+                <input type="submit" class="btn btn-success" value="Actualizar Perfil">
             </div>
         </form>
     </div>

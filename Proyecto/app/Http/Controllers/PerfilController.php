@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Perfil;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PerfilController extends Controller
 {
@@ -69,7 +70,30 @@ class PerfilController extends Controller
      */
     public function update(Request $request, Perfil $perfil)
     {
+        //VALIDAR
+        $data = request()->validate([
+            'nombre' =>'required',
+            'url' =>'required',
+            'biografia' =>'required'
+        ]);
         //
+        //dd($perfil->id);
+        //return Auth::user();
+        Auth::user()->name=$data['nombre'];
+        Auth::user()->url=$data['url'];
+        Auth::user()->save();
+
+        //eliminar datos
+        unset($data['nombre']); 
+        unset($data['url']); 
+        
+        //ACTUALIZAR EN LA 2da TABLA
+        Auth::user()->userPerfil()->update(
+            $data
+        );
+        
+        return "Perfil actualizado";
+
     }
 
     /**
