@@ -92,8 +92,8 @@
                 <label for="telefono">Telefono:</label>
                 
                 <!--alertas de error en el formulario                                                                     no borra lo ingresado -->
-                <input type="text" name="telefono" class="form-control @error('telefono') is-invalid @enderror" id="telefono"
-                    placeholder="telefono" value="{{$app1->telefono}}">
+                <input type="number" name="telefono" class="form-control @error('telefono') is-invalid @enderror" id="telefono"
+                    placeholder="telefono" value="{{$app1->telefono}}" >
                 <!--valida el campo-->
                 @error('telefono')
                 <p>ERROR </p>
